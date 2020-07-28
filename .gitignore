@@ -1,0 +1,11 @@
+.idea
+/_backups/*
+#/crewing-api
+#/crewing-front
+/crewing-shipDataCrawler
+/crewing-shipDataCrawler2
+/graphql/
+/volumes/
+/service-shipsparser
+/volumes
+/docker-compose.override.yml

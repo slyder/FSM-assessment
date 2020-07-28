@@ -1,0 +1,49 @@
+version: '3'
+services:
+
+  fleet-api:
+    build: ./fleet-api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - rabbitmq
+    command:
+      bash -c "node ./dist/main.js"
+
+  drive-simulation-service:
+    build: ./drive-simulation-service
+    depends_on:
+      - mongo
+      - rabbitmq
+    command:
+      bash -c "node ./dist/main.js"
+
+  drive-penalty-service:
+    build: ./drive-penalty-service
+    depends_on:
+      - mongo
+      - rabbitmq
+    command:
+      bash -c "node ./dist/main.js"
+
+  mongo:
+    image: "mongo:latest"
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      MONGO_INITDB_DATABASE: fms
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    expose:
+      - 5672
+    ports:
+      - "5672:5672"
+      - "15672:15672"
