@@ -9,7 +9,7 @@ configuration class
 - shared files like schema definitions, constants, common services, etc could be moved into shared folder
 - git submodules could be used instead of mono-repository
 - mongo, rabbitmq could be configured to store data into docker volumes or host system
-- in docker-compose add wait-for-rabbitmq.sh script for node-js services to avoid Disconnected from RMQ. Trying to reconnect 
+- in docker-compose add wait-for-rabbitmq.sh script for node-js services to avoid "Disconnected from RMQ. Trying to reconnect" services error 
 
 ## INSTALLATION
 
