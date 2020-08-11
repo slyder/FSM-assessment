@@ -1,11 +1,4 @@
 .idea
-/_backups/*
-#/crewing-api
-#/crewing-front
-/crewing-shipDataCrawler
-/crewing-shipDataCrawler2
-/graphql/
+.env-local
 /volumes/
-/service-shipsparser
-/volumes
 /docker-compose.override.yml

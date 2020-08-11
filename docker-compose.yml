@@ -3,6 +3,7 @@ services:
 
   fleet-api:
     build: ./fleet-api
+    env_file: .env
     ports:
       - "3000:3000"
     depends_on:
@@ -13,6 +14,7 @@ services:
 
   drive-simulation-service:
     build: ./drive-simulation-service
+    env_file: .env
     depends_on:
       - mongo
       - rabbitmq
@@ -21,6 +23,7 @@ services:
 
   drive-penalty-service:
     build: ./drive-penalty-service
+    env_file: .env
     depends_on:
       - mongo
       - rabbitmq
@@ -31,10 +34,9 @@ services:
     image: "mongo:latest"
     expose:
       - 27017
-    ports:
-      - "27017:27017"
     volumes:
       - ./mongo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./volumes/mongo/data/db:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: pass
@@ -44,6 +46,5 @@ services:
     image: "rabbitmq:3-management"
     expose:
       - 5672
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    volumes:
+      - ./volumes/rabbitmq:/var/lib/rabbitmq/

@@ -3,17 +3,20 @@ import { CarService } from './car.service';
 import { Car } from './car.schema';
 import { CarDto } from './car.dto';
 import { ClientProxy } from '@nestjs/microservices';
+import { ConfigService } from "@nestjs/config";
 
 @Controller('cars')
 export class CarController {
 
   constructor(
     private readonly carService: CarService,
+    private configService: ConfigService,
   ) {
   }
 
   @Get()
   getCars(): Promise<Car[]> {
+    console.log(this.configService.get('MONGO_URI'))
     return this.carService.findAll();
   }
 
