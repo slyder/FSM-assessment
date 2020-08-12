@@ -16,7 +16,6 @@ export class CarController {
 
   @Get()
   getCars(): Promise<Car[]> {
-    console.log(this.configService.get('MONGO_URI'))
     return this.carService.findAll();
   }
 
