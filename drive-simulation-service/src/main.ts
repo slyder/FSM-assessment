@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions } from '@nestjs/microservices'
-import { rabbitmqTransportConfigFactory } from './config/rabbitmq.transportConfig.factory';
+import { rabbitmqTransportConfigFactory } from '@konfms/shared/config/rabbitmq.transportConfig.factory';
 
 async function bootstrap() {
 

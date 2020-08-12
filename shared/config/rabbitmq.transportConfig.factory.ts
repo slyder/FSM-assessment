@@ -1,4 +1,4 @@
-import { ClientsProviderAsyncOptions, RmqOptions, Transport } from '@nestjs/microservices';
+import { RmqOptions, Transport } from '@nestjs/microservices';
 
 export const rabbitmqTransportConfigFactory = (
   urls: string[],

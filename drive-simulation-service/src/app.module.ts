@@ -6,10 +6,10 @@ import { DriveSimulationService } from './drive-sumulation.service';
 import { Trip, TripSchema } from './trip.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Movement, MovementSchema } from './movement.schema';
-import { mongooseModuleConfig } from './config/mongoose.moduleConfig';
+import { mongooseModuleConfig } from '@konfms/shared/config/mongoose.moduleConfig';
 import { ConfigModule } from '@nestjs/config';
-import { rabbitmqModuleConfigFactory } from './config/rabbitmq.moduleConfig.factory';
-import { configModuleConfig } from './config/config.moduleConfig';
+import { rabbitmqModuleConfigFactory } from '@konfms/shared/config/rabbitmq.moduleConfig.factory';
+import { configModuleConfig } from '@konfms/shared/config/config.moduleConfig';
 
 @Module({
   imports: [
