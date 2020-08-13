@@ -2,7 +2,11 @@ version: '3'
 services:
 
   fleet-api:
-    build: ./fleet-api
+    build:
+      context: ./nodejs
+      dockerfile: Dockerfile-app
+      args:
+        app: fleet-api
     env_file: .env
     ports:
       - "3000:3000"
@@ -10,25 +14,33 @@ services:
       - mongo
       - rabbitmq
     command:
-      bash -c "node ./dist/main.js"
+      node ./dist/main.js
 
   drive-simulation-service:
-    build: ./drive-simulation-service
+    build:
+      context: ./nodejs
+      dockerfile: Dockerfile-app
+      args:
+        app: drive-simulation-service
     env_file: .env
     depends_on:
       - mongo
       - rabbitmq
     command:
-      bash -c "node ./dist/main.js"
+      node ./dist/main.js
 
   drive-penalty-service:
-    build: ./drive-penalty-service
+    build:
+      context: ./nodejs
+      dockerfile: Dockerfile-app
+      args:
+        app: drive-penalty-service
     env_file: .env
     depends_on:
       - mongo
       - rabbitmq
     command:
-      bash -c "node ./dist/main.js"
+      node ./dist/main.js
 
   mongo:
     image: "mongo:latest"

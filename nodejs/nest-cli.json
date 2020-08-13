@@ -1,0 +1,48 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/fleet-api/src",
+  "projects": {
+    "shared": {
+      "type": "library",
+      "root": "libs/shared",
+      "entryFile": "index",
+      "sourceRoot": "libs/shared/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/shared/tsconfig.lib.json"
+      }
+    },
+    "api": {
+      "type": "application",
+      "root": "apps/fleet-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/fleet-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/fleet-api/tsconfig.app.json"
+      }
+    },
+    "drive-penalty-service": {
+      "type": "application",
+      "root": "apps/drive-penalty-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/drive-penalty-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/drive-penalty-service/tsconfig.app.json"
+      }
+    },
+    "drive-simulation-service": {
+      "type": "application",
+      "root": "apps/drive-simulation-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/drive-simulation-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/drive-simulation-service/tsconfig.app.json"
+      }
+    }
+  },
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/fleet-api/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/fleet-api"
+}

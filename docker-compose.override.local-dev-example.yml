@@ -3,10 +3,10 @@ services:
 
   fleet-api:
     build:
-      context: ./fleet-api
+      context: ./fleet-nodejs
 #      target: development
     volumes:
-      - ./fleet-api:/usr/src/app
+      - ./fleet-nodejs:/usr/src/app
       - /usr/src/app/node_modules
     command:
       npm run start:dev
