@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
 import { DriverService } from './driver.service';
-import { Driver } from './driver.schema';
+import { Driver } from '@app/shared/entities/driver/driver.schema';
 import { DriverDto } from './driver.dto';
 
 @Controller('drivers')

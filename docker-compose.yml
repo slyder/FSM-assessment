@@ -13,8 +13,6 @@ services:
     depends_on:
       - mongo
       - rabbitmq
-    command:
-      node ./dist/main.js
 
   drive-simulation-service:
     build:
@@ -26,8 +24,6 @@ services:
     depends_on:
       - mongo
       - rabbitmq
-    command:
-      node ./dist/main.js
 
   drive-penalty-service:
     build:
@@ -39,8 +35,6 @@ services:
     depends_on:
       - mongo
       - rabbitmq
-    command:
-      node ./dist/main.js
 
   mongo:
     image: "mongo:latest"

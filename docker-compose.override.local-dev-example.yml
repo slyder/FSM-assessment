@@ -2,11 +2,17 @@ version: '3'
 services:
 
   fleet-api:
-    build:
-      context: ./fleet-nodejs
-#      target: development
     volumes:
-      - ./fleet-nodejs:/usr/src/app
+      - ./nodejs:/usr/src/app
       - /usr/src/app/node_modules
     command:
-      npm run start:dev
+      npx nest start --watch
+
+  mongo:
+    ports:
+      - "27017:27017"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"

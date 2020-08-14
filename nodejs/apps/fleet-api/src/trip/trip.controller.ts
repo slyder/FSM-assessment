@@ -3,6 +3,7 @@ import { TripService } from './trip.service';
 import { Trip } from './trip.schema';
 import { TripDto } from './trip.dto';
 import { ClientProxy } from '@nestjs/microservices';
+import { TRIP_CREATED_BUS_MESSAGE } from '@app/shared/busMessages';
 
 // import { CAR_DRIVER_CHANGED } from "../../../shared/messages";
 
@@ -22,20 +23,13 @@ export class TripController {
   @Get(':tripId')
   getTrip(@Param() params): Promise<Trip> {
     const { tripId } = params
-
-    this.tripBus.emit<number>('trip-created', tripId);
-    console.log('emit', 'trip-created', tripId);
-
     return this.tripService.findById(tripId);
   }
 
   @Post()
   async createTrip(@Body() tripData: TripDto): Promise<Trip> {
     const trip = await this.tripService.create(tripData);
-
-    this.tripBus.emit<number>('trip-created', trip.id);
-    console.log('emit', 'trip-created', trip.id);
-
+    this.tripBus.emit<number>(TRIP_CREATED_BUS_MESSAGE, trip.id);
     return trip
   }
 

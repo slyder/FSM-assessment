@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { MicroserviceOptions } from '@nestjs/microservices'
+import { MicroserviceOptions } from '@nestjs/microservices';
 import { rabbitmqTransportConfigFactory } from '@app/shared/config/rabbitmq.transportConfig.factory';
 
 async function bootstrap() {
@@ -13,10 +13,10 @@ async function bootstrap() {
 
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
-    rabbitmqTransportConfigFactory([process.env.RABBITMQ_URI],'fms-trip-bus')
+    rabbitmqTransportConfigFactory([process.env.RABBITMQ_URI], 'fms-trip-bus')
   );
 
-  app.listen(() => console.log('Driver Simulation started'));
+  app.listen(() => console.log('Driver Simulation service started'));
 }
 
 bootstrap();

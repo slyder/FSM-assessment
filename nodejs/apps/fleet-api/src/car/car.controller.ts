@@ -1,16 +1,15 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CarService } from './car.service';
 import { Car } from './car.schema';
 import { CarDto } from './car.dto';
-import { ClientProxy } from '@nestjs/microservices';
-import { ConfigService } from "@nestjs/config";
+import { ConfigService } from '@nestjs/config';
 
-@Controller('cars')
+@Controller("cars")
 export class CarController {
 
   constructor(
     private readonly carService: CarService,
-    private configService: ConfigService,
+    private configService: ConfigService
   ) {
   }
 
@@ -19,9 +18,9 @@ export class CarController {
     return this.carService.findAll();
   }
 
-  @Get(':carId')
+  @Get(":carId")
   getCar(@Param() params): Promise<Car> {
-    const { carId } = params
+    const { carId } = params;
     return this.carService.findById(carId);
   }
 
@@ -30,16 +29,16 @@ export class CarController {
     return this.carService.create(carData);
   }
 
-  @Put(':carId')
+  @Put(":carId")
   updateCar(
-    @Param('carId') carId: number,
-    @Body() carData: CarDto,
+    @Param("carId") carId: number,
+    @Body() carData: CarDto
   ): Promise<Car> {
     return this.carService.updateById(carId, carData);
   }
 
-  @Delete(':carId')
-  deleteCar(@Param('carId') carId: number): Promise<Car> {
+  @Delete(":carId")
+  deleteCar(@Param("carId") carId: number): Promise<Car> {
     return this.carService.deleteById(carId);
   }
 

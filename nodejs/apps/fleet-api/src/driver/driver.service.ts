@@ -1,8 +1,8 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Driver } from './driver.schema';
-import { DriverDto } from "./driver.dto";
+import { Driver } from '@app/shared/entities/driver/driver.schema';
+import { DriverDto } from './driver.dto';
 
 @Injectable()
 export class DriverService {
