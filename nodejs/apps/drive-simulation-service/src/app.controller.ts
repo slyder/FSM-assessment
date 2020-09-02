@@ -12,7 +12,7 @@ export class AppController {
   }
 
   @EventPattern(TRIP_CREATED_BUS_MESSAGE)
-  handleUserCreated(trip: Trip) {
+  handleTripCreated(trip: Trip) {
     return this.driveSimulationService.getActualTrips()
   }
 

@@ -1,6 +1,5 @@
 import { Inject, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ClientsModule } from '@nestjs/microservices';
 import { DriveSimulationService } from './drive-sumulation.service';
 import { Trip, TripSchema } from './trip.schema';
@@ -28,7 +27,7 @@ import { CAR_MOVE_BUS_MESSAGE } from '@app/shared/busMessages';
 
   ],
   controllers: [AppController],
-  providers: [AppService, DriveSimulationService],
+  providers: [DriveSimulationService],
 })
 export class AppModule {
 

@@ -5,8 +5,6 @@ import { TripDto } from './trip.dto';
 import { ClientProxy } from '@nestjs/microservices';
 import { TRIP_CREATED_BUS_MESSAGE } from '@app/shared/busMessages';
 
-// import { CAR_DRIVER_CHANGED } from "../../../shared/messages";
-
 @Controller('trips')
 export class TripController {
   constructor(
